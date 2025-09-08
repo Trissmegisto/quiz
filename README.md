@@ -112,7 +112,7 @@ Com os testes passando, faça o commit com a seguinte mensagem: `Commit 2: Creat
 # Commit 3: Testing with fixtures
 
 Crie pelo menos mais dois testes de unidade utilizando as [fixtures do pytest](https://docs.pytest.org/en/stable/explanation/fixtures.html).
-Por exemplo, você pode incluir na fixture uma questão com múltiplas escolhas, e esta questão será reutilizada nos testes.
+Por exemplo, você pode incluir na fixture uma questão com múltiplas escolhas, e esta questão será reutilizada nos testes..
 
 Um exemplo simples do uso fixtures pode ser visto abaixo:
 
