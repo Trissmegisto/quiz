@@ -116,3 +116,28 @@ def test_should_return_empty_list_for_incorrect_selection():
     result = question.correct_selected_choices([1]) # User selects 'Beijing'
     
     assert result == []
+
+@pytest.fixture
+def multi_correct_question():
+    """
+    Provides a Question with 4 choices, where 2 are correct (IDs 2 and 4),
+    and max_selections is set to 2.
+    """
+    question = Question(title='Which languages are statically typed?', points=10, max_selections=2)
+    question.add_choice('Python')  # id=1
+    question.add_choice('Java', is_correct=True)    # id=2
+    question.add_choice('Ruby')    # id=3
+    question.add_choice('C#', is_correct=True)      # id=4
+    return question
+
+def test_should_return_all_correct_ids_for_multiple_selections(multi_correct_question):
+    selected_ids = [2, 4]
+    result = multi_correct_question.correct_selected_choices(selected_ids)
+    
+    assert set(result) == {2, 4}
+
+def test_should_return_partial_correct_ids_for_mixed_selections(multi_correct_question):
+    selected_ids = [2, 3]
+    result = multi_correct_question.correct_selected_choices(selected_ids)
+    
+    assert result == [2]
